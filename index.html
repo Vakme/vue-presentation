@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -8,16 +8,381 @@
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+		<link rel="stylesheet" href="dist/theme/white.css">
 
 		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+		<link rel="stylesheet" href="plugin/highlight/vs2015.css">
+		<link rel="stylesheet" href="style.css">
+		<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>
+					<h2>Dlaczego (nie) warto nauczyć się</h2>
+					<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/170px-Vue.js_Logo_2.svg.png" alt="vue_logo">
+				</section>
+				<section>
+					<div class="fragment row">
+						<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Angular_Logo_SVG.svg/200px-Angular_Logo_SVG.svg.png" alt="angular">
+						Google
+					</div>
+					<div class="fragment row">
+						<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/React_Logo_SVG.svg/100px-React_Logo_SVG.svg.png" alt="react">
+						Meta (Faceboook)
+					</div>
+					<div class="fragment row">
+						<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/170px-Vue.js_Logo_2.svg.png" alt="vue">
+						Typ, który musiał pracować z AngularJS
+					</div>
+				</section>
+				<section>
+					<div class="fragment">
+						<img src="https://images.ctfassets.net/s5uo95nf6njh/5PpFIeuDxz2T89nZNED1EP/48d62a69f31a3ab6dfc58938eb7b8c2a/evan-you-portrait.jpg?w=600&fm=avif" alt="evanyou" height="150">
+						<div>Twórca: Evan You</div>
+					</div>
+					<p class="fragment">Pierwszy release: luty 2014</p>
+					<div class="fragment">
+						Obecna wersja: 3.5 (Tengen Toppa Gurren Lagann)
+					</div>
+					<img class="fragment" src="https://c.tenor.com/N8lUu7e6_kAAAAAC/tenor.gif" alt="ttgl">
+				</section>
+				<section>
+					<img src="assets/vueversions.jpg" alt="vueversions" width="600">
+				</section>
+				<section>
+					<section>
+						<p>The Progressive Framework</p>
+					</section>
+					<section>
+						  <pre><code style="max-height: none" data-line-numbers="3|13">import { createRenderer } from '@vue/runtime-core'
+
+const { render, createApp } = createRenderer({
+  patchProp,
+  insert,
+  remove,
+  createElement
+  // ...
+})
+
+// `render` is the low-level API
+// `createApp` returns an app instance
+export { render, createApp }
+
+// re-export Vue core APIs
+export * from '@vue/runtime-core'
+						  </code></pre>
+					</section>
+					<section>
+						<p>Vue TermUI</p>
+						<img src="https://vue-termui.dev/quick-start-demo.png" alt="termui">
+					</section>
+					<section>
+						<p>TresJS</p>
+						<div class="row">
+							<pre><code data-trim>
+<script setup="true">
+import { TresCanvas } from '@tresjs/core'
+</script>
+<template>
+  <TresCanvas clear-color=”#82DBC5” window-size>
+    <TresPerspectiveCamera />
+    <TresMesh
+			@click=”onClick”
+	>
+      <TresBoxGeometry :args="[1, 1, 1]" />
+      <TresMeshNormalMaterial />
+    </TresMesh>
+  </TresCanvas>
+</template>
+							</code></pre>
+							<img src="assets/tresjs.jpg" alt="tresjs">
+						</div>
+					</section>
+				</section>
+				<section>
+					<section>
+						Rozszerzenie statycznego HTMLa
+					</section>
+					<section>
+						<div class="row">
+							<pre><code style="max-height: none" data-line-numbers="1|2|10-16">&lt;script src=&quot;https://unpkg.com/vue@3/dist/vue.global.js&quot;&gt;&lt;/script&gt;
+&lt;div id=&quot;app&quot;&gt;
+	&lt;div&gt;{{ message }}&lt;/div&gt;
+	&lt;input v-model=&quot;message&quot; /&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+  const { createApp } = Vue
+
+  createApp({
+    data() {
+      return {
+        message: 'Hello Vue!'
+      }
+    }
+  }).mount('#app')
+&lt;/script&gt;</code></pre>
+							<div style="min-width: 400px">
+								<div id="app1">
+									<div>{{ message }}</div>
+									<input v-model="message" />
+
+								</div>
+
+								<script>
+									const { createApp: createApp1, ref: ref1 } = Vue
+
+									createApp1({
+										setup() {
+											const message = ref1('Hello vue!')
+											return {
+												message
+											}
+										}
+									}).mount('#app1')
+								</script>
+							</div>
+						</div>
+					</section>
+				</section>
+				<section>
+					<section>Single-Page Application (SPA)</section>
+					<section>
+						<p>Options API vs Composition API</p>
+
+						<div class="row">
+							<pre><code style="max-height: none">&lt;script&gt;
+export default {
+  data() {
+    return {
+      count: 0
+    }
+  }
+}
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;button @click=&quot;count++&quot;&gt;
+		You clicked me {{ count }} times.
+	&lt;/button&gt;
+&lt;/template&gt;</code></pre>
+							<pre><code style="max-height: none">&lt;script setup&gt;
+import { ref } from 'vue'
+
+const count = ref(0)
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;button @click=&quot;count++&quot;&gt;
+		You clicked me {{ count }} times.
+	&lt;/button&gt;
+&lt;/template&gt;</code></pre>
+						</div>
+					</section>
+					<section>
+						<div class="row">
+							<pre><code style="max-height: none" data-line-numbers="3-4|14,19|5-8|15-16" >&lt;script setup&gt;
+import { ref } from 'vue'
+const msg = ref('');
+const msgs = ref(['Hello!']);
+const submit = () =&gt; {
+  msgs.value = [...msgs.value, msg.value];
+  msg.value ='';
+}
+const isEven = (i) =&gt; i%2 === 0;
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;div style=&quot;height: 400px;...&quot;&gt;
+    &lt;div v-for=&quot;(m, i) in msgs&quot; :key=&quot;i&quot; :style=&quot;{'align-self': isEven(i) ? 'start' : 'end'}&quot;&gt;
+      &lt;span v-if=&quot;isEven(i)&quot;&gt;- {{m}}&lt;/span&gt;
+      &lt;span v-else&gt;{{m}} -&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;input v-model=&quot;msg&quot; @keyup.enter=&quot;submit&quot; /&gt;
+&lt;/template&gt;</code></pre>
+							<div>
+								<div id="app2">
+									<div style="height: 400px; width: 200px; display: flex; overflow-y: auto; justify-content: flex-end; flex-direction: column; font-size: 16px">
+										<div v-for="(m, i) in msgs" :style="{'align-self': isEven(i) ? 'start' : 'end'}" :key="i">
+											<span v-if="isEven(i)">- {{m}}</span>
+											<span v-else>{{m}} -</span>
+										</div>
+									</div>
+									<input v-model="msg" @keyup.enter="submit" />
+								</div>
+								<script>
+									const { createApp: createApp2, ref: ref2 } = Vue
+
+									createApp2({
+										setup() {
+											const msg = ref2('');
+											const msgs = ref2(['Hello!']);
+											const submit = () => {
+												msgs.value = [...msgs.value, msg.value];
+												msg.value ='';
+											}
+											const isEven = (i) => i%2 === 0;
+											return {
+												msg, msgs, submit, isEven
+											}
+										}
+									}).mount('#app2')
+								</script>
+							</div>
+						</div>
+					</section>
+				</section>
+				<section>
+					<section>
+						SSR
+					</section>
+				</section>
+				<section>
+					<section>
+						WebComponents
+					</section>
+				</section>
+				<section>
+					<section>
+						Porównanie
+					</section>
+					<section>
+						<div class="row">
+							<pre style="width: 40%"><code data-line-numbers style="max-height: 600px; font-size: 12px; line-height: 1.2em">&lt;script setup&gt;
+import { ref } from 'vue'
+const msg = ref('');
+const msgs = ref(['Hello!']);
+const submit = () =&gt; {
+  msgs.value = [...msgs.value, msg.value];
+  msg.value ='';
+}
+const isEven = (i) =&gt; i%2 === 0;
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;div style=&quot;height: 400px; ...&quot;&gt;
+    &lt;div v-for=&quot;(m, i) in msgs&quot; :style=&quot;{'align-self': isEven(i) ? 'start' : 'end'}&quot; :key=&quot;i&quot;&gt;
+      &lt;span v-if=&quot;isEven(i)&quot;&gt;- {{m}}&lt;/span&gt;
+      &lt;span v-else&gt;{{m}} -&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;input v-model=&quot;msg&quot; @keyup.enter=&quot;submit&quot; /&gt;
+&lt;/template&gt;</code></pre>
+							<pre style="width: 40%"><code data-line-numbers style="max-height: 600px; font-size: 12px; line-height: 1.2em">import React, { useRef, useState } from 'react'
+
+const App = () =&gt; {
+  const [msg, setMsg] = useState('')
+  const [msgs, setMsgs] = useState(['Hello!'])
+  const submit = () =&gt; {
+    setMsgs(initialMsgs =&gt; [...initialMsgs, msg]);
+    setMsg('');
+  }
+  const isEven = i =&gt; i%2 === 0;
+
+  return (
+    &lt;&gt;
+    &lt;div style={{height: 400, ...}}&gt;
+      {msgs.map((m, i) =&gt; (
+      &lt;div key={i} style={{alignSelf: isEven(i) ? 'start' : 'end'}}&gt;
+        {isEven(i) ? (&lt;span&gt;- {m}&lt;/span&gt;) : (&lt;span&gt;{m} -&lt;/span&gt;)}
+      &lt;/div&gt;
+    ))}
+    &lt;/div&gt;
+      &lt;input value={msg} onChange={e =&gt; setMsg(e.target.value)} onKeyUp={event =&gt; {
+                if (event.key === 'Enter') {
+                   submit();
+                }
+              }} /&gt;
+    &lt;/&gt;
+  )
+}
+
+export default App</code></pre>
+							<pre style="width: 40%"><code data-line-numbers style="max-height: 600px; font-size: 12px; line-height: 1.2em">import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { bootstrapApplication } from '@angular/platform-browser';
+
+@Component({
+  imports: [CommonModule, FormsModule],
+  selector: 'app-root',
+  template: `
+    &lt;div style=&quot;height: 400px; ...&quot;&gt;
+    @for (m of msgs; track $index) {
+      &lt;div [ngStyle]=&quot;{ 'align-self': isEven($index) ? 'start' : 'end'}&quot;&gt;
+      @if (isEven($index)) {
+        &lt;span&gt;- {{ m }}&lt;/span&gt;
+      } @else {
+        &lt;span&gt;{{ m }} -&lt;/span&gt;
+      }
+      &lt;/div&gt;
+    }
+    &lt;/div&gt;
+    &lt;input [(ngModel)]=&quot;msg&quot; (keyup.enter)=&quot;submit()&quot; /&gt;
+  `,
+})
+export class ChatComponent {
+  msg: string = '';
+  msgs: string[] = ['Hello!'];
+  submit() {
+    this.msgs.push(this.msg);
+    this.msg = '';
+  }
+  isEven(i: number): boolean {
+    return i % 2 === 0;
+  }
+}
+
+bootstrapApplication(ChatComponent);
+</code></pre>
+						</div>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Czy warto?</h2>
+					</section>
+					<section>
+						<p>
+							Do szybkiego prototypingu
+						</p>
+						<p class="codepen" data-height="300" data-default-tab="result" data-slug-hash="LEPKgEb" data-pen-title="Drag'n drop points vue" data-user="abi-spyro" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/abi-spyro/pen/LEPKgEb">
+  Drag'n drop points vue</a> by abi-spyro (<a href="https://codepen.io/abi-spyro">@abi-spyro</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+						</p>
+						<script async src="https://public.codepenassets.com/embed/index.js"></script>
+					</section>
+					<section>
+						<ul>
+							<li class="fragment">Jako pierwszy framework</li>
+							<li class="fragment">Do tworzenia bibliotek WebComponents</li>
+							<li class="fragment">Jeśli chcesz małym kosztem rozszerzać statyczne strony dynamicznie generowanymi elementami (petite-vue ma 6kb)</li>
+							<li class="fragment">Jeśli lubisz patrzeć na benchmarki</li>
+							<li class="fragment">Jeśli chcesz rozszerzyć swoje portfolio</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<h2>Kiedy nie warto?</h2>
+					<ul>
+						<li class="fragment">Gdy nie masz do tego ludzi</li>
+						<li class="fragment">Gdy inne aplikacje są w innych frameworkach</li>
+						<li class="fragment">Gdy nie istnieje <b style="color: darkred">techniczna i biznesowa potrzeba</b> pisania w Vue</li>
+					</ul>
+				</section>
+				<section>
+						<h1 class="fragment"  style="color: darkred">nie</h1>
+						<h1 class="fragment"  style="color: darkred">piszcie</h1>
+						<h1 class="fragment"  style="color: darkred">w vue</h1>
+						<h1 class="fragment"  style="color: darkred">jak w react</h1>
+				</section>
+				<section>
+					<h2>Dziękuję!</h2>
+					<img src="https://preview.redd.it/ruewqw4fpml91.png?width=1080&crop=smart&auto=webp&s=e40ecf7e3e3a26744c62bc0e63f25994344b31e3" width="500" alt="meme">
+				</section>
 			</div>
 		</div>
 
