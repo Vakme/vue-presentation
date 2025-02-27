@@ -12,10 +12,10 @@
 .hljs-literal,
 .hljs-symbol,
 .hljs-name {
-  color: #569CD6;
+  color: #647eff;
 }
 .hljs-link {
-  color: #569CD6;
+  color: #647eff;
   text-decoration: underline;
 }
 
@@ -31,7 +31,7 @@
 
 .hljs-string,
 .hljs-meta .hljs-string {
-  color: #D69D85;
+  color: #42d392;
 }
 
 .hljs-regexp,
@@ -71,7 +71,7 @@
 
 .hljs-attr,
 .hljs-attribute {
-  color: #9CDCFE;
+  color: #95a7ff;
 }
 
 .hljs-section {

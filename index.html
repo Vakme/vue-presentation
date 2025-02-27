@@ -8,21 +8,22 @@
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/white.css">
+		<link rel="stylesheet" href="dist/theme/vue.css">
 
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="plugin/highlight/vs2015.css">
-		<link rel="stylesheet" href="style.css">
 		<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
 				<section>
-					<h2>Dlaczego (nie) warto nauczyć się</h2>
+					<h2>Dlaczego (nie) warto nauczyć się <span class="accent" >Vue.js</span></h2>
 					<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/170px-Vue.js_Logo_2.svg.png" alt="vue_logo">
 				</section>
 				<section>
+					<h4 class="row">Za każdym popularnym narzędziem stoi potężny motywator...</h4>
 					<div class="fragment row">
 						<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Angular_Logo_SVG.svg/200px-Angular_Logo_SVG.svg.png" alt="angular">
 						Google
@@ -37,22 +38,34 @@
 					</div>
 				</section>
 				<section>
-					<div class="fragment">
-						<img src="https://images.ctfassets.net/s5uo95nf6njh/5PpFIeuDxz2T89nZNED1EP/48d62a69f31a3ab6dfc58938eb7b8c2a/evan-you-portrait.jpg?w=600&fm=avif" alt="evanyou" height="150">
-						<div>Twórca: Evan You</div>
-					</div>
-					<p class="fragment">Pierwszy release: luty 2014</p>
-					<div class="fragment">
-						Obecna wersja: 3.5 (Tengen Toppa Gurren Lagann)
-					</div>
-					<img class="fragment" src="https://c.tenor.com/N8lUu7e6_kAAAAAC/tenor.gif" alt="ttgl">
-				</section>
-				<section>
-					<img src="assets/vueversions.jpg" alt="vueversions" width="600">
+					<section>
+						<div>
+							<img src="https://images.ctfassets.net/s5uo95nf6njh/5PpFIeuDxz2T89nZNED1EP/48d62a69f31a3ab6dfc58938eb7b8c2a/evan-you-portrait.jpg?w=600&fm=avif" alt="evanyou" height="150">
+							<div>Twórca: <span class="accent">Evan You</span></div>
+						</div>
+						<p class="fragment">Pierwszy release: luty 2014</p>
+						<div class="fragment">
+                            Obecna wersja: <span class="accent">3.5</span> (Tengen Toppa Gurren Lagann)
+						</div>
+						<img class="fragment" src="https://c.tenor.com/N8lUu7e6_kAAAAAC/tenor.gif" alt="ttgl">
+					</section>
+					<section>
+						<img src="assets/vueversions.jpg" alt="vueversions" width="600">
+					</section>
 				</section>
 				<section>
 					<section>
-						<p>The Progressive Framework</p>
+						<h2 class="tagline"> The <span class="accent" >Progressive</span><br >JavaScript Framework </h2>
+					</section>
+					<section>
+						<ul>
+							<li><span class="accent">Strony statyczne</span> (w runtime)</li>
+							<li class="fragment">Single-Page Application <span class="accent" >(SPA)</span></li>
+							<li class="fragment">Server-Side Rendering <span class="accent" >(SSR)</span></li>
+							<li class="fragment">Static Site Generation <span class="accent" >(SSG)</span></li>
+							<li class="fragment"><span class="accent" >Web Components</span></li>
+							<li class="fragment">A także...</li>
+						</ul>
 					</section>
 					<section>
 						  <pre><code style="max-height: none" data-line-numbers="3|13">import { createRenderer } from '@vue/runtime-core'
@@ -84,17 +97,15 @@ export * from '@vue/runtime-core'
 <script setup="true">
 import { TresCanvas } from '@tresjs/core'
 </script>
-<template>
-  <TresCanvas clear-color=”#82DBC5” window-size>
-    <TresPerspectiveCamera />
-    <TresMesh
-			@click=”onClick”
-	>
-      <TresBoxGeometry :args="[1, 1, 1]" />
-      <TresMeshNormalMaterial />
-    </TresMesh>
-  </TresCanvas>
-</template>
+&lt;template&gt;
+  &lt;TresCanvas clear-color=&rdquo;#82DBC5&rdquo; window-size&gt;
+    &lt;TresPerspectiveCamera /&gt;
+    &lt;TresMesh @click=&rdquo;onClick&rdquo;&gt;
+      &lt;TresBoxGeometry :args=&quot;[1, 1, 1]&quot; /&gt;
+      &lt;TresMeshNormalMaterial /&gt;
+    &lt;/TresMesh&gt;
+  &lt;/TresCanvas&gt;
+&lt;/template&gt;
 							</code></pre>
 							<img src="assets/tresjs.jpg" alt="tresjs">
 						</div>
@@ -102,9 +113,10 @@ import { TresCanvas } from '@tresjs/core'
 				</section>
 				<section>
 					<section>
-						Rozszerzenie statycznego HTMLa
+						<h3>Rozszerzenie statycznego HTMLa</h3>
 					</section>
 					<section>
+						<h4>Vue w akcji - przykład 1</h4>
 						<div class="row">
 							<pre><code style="max-height: none" data-line-numbers="1|2|10-16">&lt;script src=&quot;https://unpkg.com/vue@3/dist/vue.global.js&quot;&gt;&lt;/script&gt;
 &lt;div id=&quot;app&quot;&gt;
@@ -147,9 +159,21 @@ import { TresCanvas } from '@tresjs/core'
 					</section>
 				</section>
 				<section>
-					<section>Single-Page Application (SPA)</section>
+					<section><h3>Single-Page Application (SPA)</h3></section>
 					<section>
-						<p>Options API vs Composition API</p>
+						<h4>Możliwości Vue</h4>
+						<ul>
+							<li class="fragment">Text interpolation: <span class="accent" ><code>{{ variable }}</code></span></li>
+							<li class="fragment">JS expressions: <br><span class="accent" ><code>{{ message.split('').reverse().join('') }}</code></span></li>
+							<li class="fragment">Attribute binding <span class="accent" ><code>v-bind:href / :href</code></span></li>
+							<li class="fragment">Event binding <span class="accent" ><code>v-on:click / @click</code></span></li>
+							<li class="fragment">Conditional rendering <span class="accent" ><code>v-if / v-else</code></span></li>
+							<li class="fragment">List rendering <span class="accent" ><code>v-for</code></span></li>
+							<li class="fragment">Two-way data binding <span class="accent" ><code>v-model</code></span></li>
+						</ul>
+					</section>
+					<section>
+						<h4>Komponenty: <span class="accent">Options API</span> vs <span class="accent">Composition API</span></h4>
 
 						<div class="row">
 							<pre><code style="max-height: none">&lt;script&gt;
@@ -181,6 +205,7 @@ const count = ref(0)
 						</div>
 					</section>
 					<section>
+						<h4>Vue w akcji - przykład 2</h4>
 						<div class="row">
 							<pre><code style="max-height: none" data-line-numbers="3-4|14,19|5-8|15-16" >&lt;script setup&gt;
 import { ref } from 'vue'
@@ -235,8 +260,49 @@ const isEven = (i) =&gt; i%2 === 0;
 					</section>
 				</section>
 				<section>
+						<section><h3>Server-Side Rendering (SSR)</h3></section>
+						<section>
+							<div class="row">
+							<pre><code style="max-height: none; font-size: 16px; line-height: 1.2em" >import express from 'express'
+import { createSSRApp } from 'vue'
+import { renderToString } from 'vue/server-renderer'
+
+const server = express()
+
+server.get('/', (req, res) =&gt; {
+    const app = createSSRApp({
+        data: () =&gt; ({ msg: 'Hello Krak&oacute;w' }),
+        template: `&lt;div&gt;SSR message: {{msg}}&lt;/div&gt;`
+    })
+
+    renderToString(app).then((html) =&gt; {
+        res.send(`
+    &lt;!DOCTYPE html&gt;
+    &lt;html&gt;
+      &lt;head&gt;
+        &lt;title&gt;Vue SSR Example&lt;/title&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;div id=&quot;app&quot;&gt;${html}&lt;/div&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;
+    `)
+    })
+})</code></pre>
+								<div>
+
+                                    <iframe data-src="http://localhost:3000"></iframe>
+								</div>
+							</div>
+						</section>
+                    <section>
+                        <h4>Nuxt.js</h4>
+                        <img src="assets/nuxt.png" alt="nuxt">
+                    </section>
+                </section>
+				<section>
 					<section>
-						SSR
+                        Static Site Generation (SSG)
 					</section>
 				</section>
 				<section>
@@ -246,9 +312,46 @@ const isEven = (i) =&gt; i%2 === 0;
 				</section>
 				<section>
 					<section>
-						Porównanie
-					</section>
+						<h3>Porównanie</h3>
+                    </section>
 					<section>
+                        <h4>Skalowanie</h4>
+                        <table class="center"><thead>
+                        <tr>
+                            <th></th>
+                            <th>W górę</th>
+                            <th>W dół</th>
+                        </tr></thead>
+                            <tbody>
+                            <tr>
+                                <td>Angular</td>
+                                <td>✓</td>
+                                <td>✗</td>
+                            </tr>
+                            <tr>
+                                <td>React</td>
+                                <td>✓*</td>
+                                <td>✗</td>
+                            </tr>
+                            <tr class="accent">
+                                <td>Vue</td>
+                                <td>✓*</td>
+                                <td>✓</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    <p style="font-size: 0.5em">* przy użyciu dodatkowych narzędzi</p>
+                    </section>
+                    <section>
+                        <h4>Benchmarki</h4>
+                        <div class="row">
+                            <img src="assets/benchmark1.jpg" alt="benchmark1" width="300">
+                            <img src="assets/benchmark2.jpg" alt="benchmark1" width="300">
+                        </div>
+                        <a href="https://krausest.github.io/js-framework-benchmark/2025/table_chrome_132.0.6834.83.html" target="_blank">Link do benchmarku</a>
+                    </section>
+					<section>
+                        <h4>W kodzie</h4>
 						<div class="row">
 							<pre style="width: 40%"><code data-line-numbers style="max-height: 600px; font-size: 12px; line-height: 1.2em">&lt;script setup&gt;
 import { ref } from 'vue'
@@ -339,15 +442,31 @@ bootstrapApplication(ChatComponent);
 </code></pre>
 						</div>
 					</section>
+                    <section>
+                        <h4>Vue vs React</h4>
+                        <div class="r-stack">
+                            <img src="assets/vuereact.jpg" alt="vuereact">
+                            <img class="fragment" src="assets/vuereact2.jpg" alt="vuereact2">
+                            <img class="fragment" src="assets/vuereact3.jpg" alt="vuereact3">
+                        </div>
+                    </section>
+                    <section>
+                        <h4>Vue vs Angular</h4>
+                        <div class="r-stack">
+                            <img src="assets/vueangular.jpg" alt="vueangular">
+                            <img class="fragment" src="assets/vueangular2.jpg" alt="vueangular2">
+                            <img class="fragment" src="assets/vueangular3.jpg" alt="vueangular3">
+                        </div>
+                    </section>
 				</section>
 				<section>
 					<section>
 						<h2>Czy warto?</h2>
 					</section>
 					<section>
-						<p>
+						<h4>
 							Do szybkiego prototypingu
-						</p>
+						</h4>
 						<p class="codepen" data-height="300" data-default-tab="result" data-slug-hash="LEPKgEb" data-pen-title="Drag'n drop points vue" data-user="abi-spyro" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
   <span>See the Pen <a href="https://codepen.io/abi-spyro/pen/LEPKgEb">
   Drag'n drop points vue</a> by abi-spyro (<a href="https://codepen.io/abi-spyro">@abi-spyro</a>)
@@ -357,7 +476,7 @@ bootstrapApplication(ChatComponent);
 					</section>
 					<section>
 						<ul>
-							<li class="fragment">Jako pierwszy framework</li>
+							<li>Jako pierwszy framework</li>
 							<li class="fragment">Do tworzenia bibliotek WebComponents</li>
 							<li class="fragment">Jeśli chcesz małym kosztem rozszerzać statyczne strony dynamicznie generowanymi elementami (petite-vue ma 6kb)</li>
 							<li class="fragment">Jeśli lubisz patrzeć na benchmarki</li>
@@ -368,16 +487,10 @@ bootstrapApplication(ChatComponent);
 				<section>
 					<h2>Kiedy nie warto?</h2>
 					<ul>
-						<li class="fragment">Gdy nie masz do tego ludzi</li>
+						<li>Gdy nie masz do tego ludzi</li>
 						<li class="fragment">Gdy inne aplikacje są w innych frameworkach</li>
-						<li class="fragment">Gdy nie istnieje <b style="color: darkred">techniczna i biznesowa potrzeba</b> pisania w Vue</li>
+						<li class="fragment">Gdy nie istnieje <b class="accent">techniczna i biznesowa potrzeba</b> pisania w Vue</li>
 					</ul>
-				</section>
-				<section>
-						<h1 class="fragment"  style="color: darkred">nie</h1>
-						<h1 class="fragment"  style="color: darkred">piszcie</h1>
-						<h1 class="fragment"  style="color: darkred">w vue</h1>
-						<h1 class="fragment"  style="color: darkred">jak w react</h1>
 				</section>
 				<section>
 					<h2>Dziękuję!</h2>
